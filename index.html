@@ -17,6 +17,10 @@
 
     <div class="formulario">
         <h1>Inscripción para evento de The Binding Of Isaac</h1>
+        <div class="modCampos">
+            <button type="button" id="addEmailButton">+</button>
+            <button type="button" id="removeEmailButton">-</button>
+        </div>
         <form id="formulario">
             <label for="nombre">Nombre: </label>
             <input type="text" name="nombre" placeholder="Tu nombre">
@@ -25,11 +29,14 @@
             <input type="text" name="apellidos" placeholder="Tus apellidos">
 
             <label for="email">Correo: </label>
-            <input type="email" name="email" placeholder="Tus correo">
-            <button type="button" id="buttonEmail">Añadir otro email</button>
+            <input type="email" name="email" placeholder="example@domain.com">
 
+            <label for="telefono">Teléfono: </label>
+            <input type="text" name="telefono" placeholder="Tu teléfono" oninput="telCheck()">
             <button type="submit">Enviar</button>
+
         </form>
+
     </div>
 
     <script src="js/script_formulario.js"></script>
