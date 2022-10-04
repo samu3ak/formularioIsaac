@@ -26,6 +26,7 @@ $("#addEmailButton").addEventListener("click", function () {
         input_correo.setAttribute("type", "email");
         input_correo.setAttribute("name", "email");
         input_correo.setAttribute("placeholder", "example@domain.com");
+        input_correo.setAttribute("oninput", "emailCheck(this.value)");
         insertAfter(input_correo, $("input[type=email]"));
         showed = false;
     } else {
@@ -44,20 +45,37 @@ $("#removeEmailButton").addEventListener("click", function () {
     $(".msgEmail").remove();
     showed = false;
 });
+
+// Validation boolean
+var isOk = false;
+
 // Validates de telephone number
-insertAfter(noValidText("Número de teléfono incorrecto", "msgTel"), $("input[name=telefono]"));
-$(".msgTel").style.display = "none";
+insertAfter(noValidText("Número de teléfono incorrecto", "noValidTel"), $("input[name=telefono]"));
+$(".noValidTel").style.display = "none";
 var telRegex = /^(\d{9})$/;
-function telCheck() {
-    if (!$("input[name=telefono]").value.replaceAll(" ", "").match(telRegex)) {
-        $(".msgTel").style.display = "block";
+function telCheck(numero) {
+    if (!numero.replaceAll(" ", "").match(telRegex)) {
+        $(".noValidTel").style.display = "block";
     } else {
-        $(".msgTel").style.display = "none";
+        $(".noValidTel").style.display = "none";
     }
 }
 
 // Validates email
-
+insertAfter(noValidText("Formato correo no válido", "noValidEmail"), $("input[name=email]"));
+$(".noValidEmail").style.display = "none";
+var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+function emailCheck(email) {
+    if (!email.match(emailRegex)) {
+        $(".noValidEmail").style.display = "block";
+    } else {
+        $(".noValidEmail").style.display = "none";
+    }
+}
 
 // Checks if it's possible to submit the form
-$("button[type=submit]").disabled = true;
+if (!isOk) {
+    $("button[type=submit]").disabled = true;
+} else {
+    $("button[type=submit]").disabled = false;
+}

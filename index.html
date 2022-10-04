@@ -29,10 +29,10 @@
             <input type="text" name="apellidos" placeholder="Tus apellidos">
 
             <label for="email">Correo: </label>
-            <input type="email" name="email" placeholder="example@domain.com">
+            <input type="email" name="email" placeholder="example@domain.com" oninput="emailCheck(this.value)">
 
             <label for="telefono">Teléfono: </label>
-            <input type="text" name="telefono" placeholder="Tu teléfono" oninput="telCheck()">
+            <input type="text" name="telefono" placeholder="Tu teléfono" oninput="telCheck(this.value)">
             <button type="submit">Enviar</button>
 
         </form>
