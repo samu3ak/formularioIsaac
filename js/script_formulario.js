@@ -27,7 +27,11 @@ $("#addEmailButton").addEventListener("click", function () {
         input_correo.setAttribute("name", "email");
         input_correo.setAttribute("placeholder", "example@domain.com");
         input_correo.setAttribute("oninput", "emailCheck(this.value)");
-        insertAfter(input_correo, $("input[type=email]"));
+        if (numCampos.length != 0) {
+            insertAfter(input_correo, $("#campoCorreo"));
+        } else {
+            insertAfter(input_correo, $("input[type=email]"));
+        }
         showed = false;
     } else {
         if (!showed) {
