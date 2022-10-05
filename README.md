@@ -1,2 +1,2 @@
 # formularioIsaac
-Formulario de Fans de Isaac
+Formulario de inscripción para el evento de The Binding Of Isaac
