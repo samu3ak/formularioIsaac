@@ -50,8 +50,8 @@ $("#removeEmailButton").addEventListener("click", function () {
     showed = false;
 });
 
-// Validation boolean
-var isOk = false;
+// submitValidation boolean
+var isValidated = false;
 
 // Validates de telephone number
 insertAfter(noValidText("Número de teléfono incorrecto", "noValidTel"), $("input[name=telefono]"));
@@ -60,9 +60,12 @@ var telRegex = /^(\d{9})$/;
 function telCheck(numero) {
     if (!numero.replaceAll(" ", "").match(telRegex)) {
         $(".noValidTel").style.display = "block";
+        isValidated = false;
     } else {
         $(".noValidTel").style.display = "none";
+        isValidated = true;
     }
+    submitValidation();
 }
 
 // Validates email
@@ -72,14 +75,33 @@ var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 function emailCheck(email) {
     if (!email.match(emailRegex)) {
         $(".noValidEmail").style.display = "block";
+        isValidated = false;
     } else {
         $(".noValidEmail").style.display = "none";
+        isValidated = true;
     }
+    submitValidation();
 }
 
 // Checks if it's possible to submit the form
-if (!isOk) {
-    $("button[type=submit]").disabled = true;
-} else {
-    $("button[type=submit]").disabled = false;
+insertAfter(noValidText("Te has dejado algún campo incompleto o con mal formato", "noSubmit"), $("button[type=submit]"));
+$(".noSubmit").style.display = "none";
+function submitValidation() {
+    if (isValidated && !oneFieldIsEmpty()) {
+        $("button[type=submit]").disabled = false;
+        $(".noSubmit").style.display = "none";
+    } else {
+        $("button[type=submit]").disabled = true;
+        $(".noSubmit").style.display = "block";
+    }
+}
+
+// This function checks if any of the fields are empty by returning a boolean
+function oneFieldIsEmpty() {
+    let isEmpty = false;
+    let inputFields = document.querySelectorAll("input");
+    for (var i = inputFields.length - 1; i >= 0; i--) {
+        isEmpty = inputFields[i].value == "";
+    }
+    return isEmpty;
 }
