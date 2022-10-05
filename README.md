@@ -1,2 +1,2 @@
 # formularioIsaac
-Formulario de para Fans de Isaac
+Formulario de Fans de Isaac
