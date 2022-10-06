@@ -84,7 +84,7 @@ function emailCheck(email) {
 }
 
 // Checks if it's possible to submit the form
-insertAfter(noValidText("Recuerda rellenar todos los campos y con el formato", "noSubmit"), $("button[type=submit]"));
+insertAfter(noValidText("Recuerda rellenar todos los campos y con el formato adecuado", "noSubmit"), $("button[type=submit]"));
 $(".noSubmit").style.display = "none";
 function submitValidation() {
     if (isValidated && !oneFieldIsEmpty()) {
