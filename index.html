@@ -18,8 +18,8 @@
     <div class="formulario">
         <h1>Inscripción para evento de The Binding Of Isaac</h1>
         <div class="modCampos">
-            <button type="button" id="addEmailButton" onclick="emailCheck()">+</button>
-            <button type="button" id="removeEmailButton" onclick="emailCheck()">-</button>
+            <button type="button" id="addEmailButton" onmouseout="emailCheck()">+</button>
+            <button type="button" id="removeEmailButton" onmouseout="emailCheck()">-</button>
         </div>
         <form id=" formulario">
             <label for="nombre">Nombre: </label>
@@ -29,7 +29,7 @@
             <input type="text" name="apellidos" placeholder="Tus apellidos" onfocusout="submitValidation()">
 
             <label for="email">Correo: </label>
-            <input type="email" name="email" placeholder="example@domain.com" onfocusout="emailCheck(this.value)">
+            <input type="email" name="email" placeholder="example@domain.com" onfocusout="emailCheck()">
 
             <label for="telefono">Teléfono: </label>
             <input type="text" name="telefono" placeholder="Tu teléfono" onfocusout="telCheck(this.value)">

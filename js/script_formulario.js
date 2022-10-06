@@ -72,7 +72,9 @@ function telCheck(numero) {
 insertAfter(noValidText("Formato correo no válido", "noValidEmail"), $("input[name=email]"));
 $(".noValidEmail").style.display = "none";
 var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-function emailCheck(email) {
+function emailCheck() {
+    let emails = document.querySelectorAll("input[type=email]");
+    let email = emails[emails.length - 1].value;
     if (!email.match(emailRegex)) {
         $(".noValidEmail").style.display = "block";
         isValidated = false;
