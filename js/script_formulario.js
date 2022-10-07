@@ -26,7 +26,7 @@ $("#addEmailButton").addEventListener("click", function () {
         input_correo.setAttribute("type", "email");
         input_correo.setAttribute("name", "email");
         input_correo.setAttribute("placeholder", "example@domain.com");
-        input_correo.setAttribute("oninput", "emailCheck(this.value)");
+        input_correo.setAttribute("onfocusout", "check(this.name)");
         if (numCampos.length != 0) {
             insertAfter(input_correo, $("#campoCorreo"));
         } else {
@@ -68,18 +68,28 @@ function telCheck(numero) {
     submitValidation();
 }
 
-// Validates email
+// Creates no valid text for email and hides it
 insertAfter(noValidText("Formato correo no válido", "noValidEmail"), $("input[name=email]"));
 $(".noValidEmail").style.display = "none";
-var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-function emailCheck() {
-    let emails = document.querySelectorAll("input[type=email]");
-    let email = emails[emails.length - 1].value;
-    if (!email.match(emailRegex)) {
-        $(".noValidEmail").style.display = "block";
+
+// Validates a field with regex
+
+function check(elementName) {
+    let elements = document.querySelectorAll("input[name=" + elementName + "]");
+    let element = elements[elements.length - 1].value;
+    let regex = "";
+    let classMsg = "";
+    switch (elementName) {
+        case "email":
+            regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+            classMsg = ".noValidEmail";
+            break;
+    }
+    if (!element.match(regex)) {
+        $(classMsg).style.display = "block";
         isValidated = false;
     } else {
-        $(".noValidEmail").style.display = "none";
+        $(classMsg).style.display = "none";
         isValidated = true;
     }
     submitValidation();
@@ -107,3 +117,4 @@ function oneFieldIsEmpty() {
     }
     return isEmpty;
 }
+
