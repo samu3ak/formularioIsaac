@@ -53,24 +53,15 @@ $("#removeEmailButton").addEventListener("click", function () {
 // submitValidation boolean
 var isValidated = false;
 
-// Validates de telephone number
-insertAfter(noValidText("Número de teléfono incorrecto", "noValidTel"), $("input[name=telefono]"));
-$(".noValidTel").style.display = "none";
-var telRegex = /^(\d{9})$/;
-function telCheck(numero) {
-    if (!numero.replaceAll(" ", "").match(telRegex)) {
-        $(".noValidTel").style.display = "block";
-        isValidated = false;
-    } else {
-        $(".noValidTel").style.display = "none";
-        isValidated = true;
-    }
-    submitValidation();
-}
-
-// Creates no valid text for email and hides it
+// Creates no valid text for the fields and hides it
 insertAfter(noValidText("Formato correo no válido", "noValidEmail"), $("input[name=email]"));
 $(".noValidEmail").style.display = "none";
+
+insertAfter(noValidText("Número de teléfono incorrecto", "noValidTel"), $("input[name=telefono]"));
+$(".noValidTel").style.display = "none";
+
+insertAfter(noValidText("Formato DNI no válido", "noValidDNI"), $("input[name=DNI]"));
+$(".noValidDNI").style.display = "none";
 
 // Validates a field with regex
 
@@ -83,6 +74,16 @@ function check(elementName) {
         case "email":
             regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
             classMsg = ".noValidEmail";
+            break;
+        case "telefono":
+            regex = /^(\d{9})$/;
+            classMsg = ".noValidTel";
+            element = element.replaceAll(" ", "");
+            break;
+        case "DNI":
+            regex = /^([0-9]{8})([A-Z]{1})$/
+            classMsg = ".noValidDNI";
+            element = element.replaceAll(" ", "");
             break;
     }
     if (!element.match(regex)) {
