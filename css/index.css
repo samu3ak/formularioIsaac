@@ -16,7 +16,7 @@ header {
 .formulario form {
     margin: auto;
     text-align: center;
-    height: 500px;
+    height: 700px;
     width: 275px;
     background-color: red;
     font-weight: bold;
@@ -54,7 +54,7 @@ header {
 
 .modCampos {
     float: right;
-    height: 500px;
+    height: 700px;
     width: 100px;
     background-color: rgb(124, 124, 124);
     margin-right: 706px;

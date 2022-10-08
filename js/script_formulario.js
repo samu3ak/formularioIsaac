@@ -3,6 +3,7 @@ function $(selector) {
     return document.querySelector(selector);
 }
 
+
 // No valid message function
 function noValidText(msg, clase) {
     let texto = document.createElement("p");
@@ -63,6 +64,12 @@ $(".noValidTel").style.display = "none";
 insertAfter(noValidText("Formato DNI no válido", "noValidDNI"), $("input[name=DNI]"));
 $(".noValidDNI").style.display = "none";
 
+insertAfter(noValidText("Formato de IBAN no válido", "noValidIBAN"), $("input[name=IBAN]"));
+$(".noValidIBAN").style.display = "none";
+
+insertAfter(noValidText("Formato de Swift no válido", "noValidSwift"), $("input[name=Swift]"));
+$(".noValidSwift").style.display = "none";
+
 // Validates a field with regex
 
 function check(elementName) {
@@ -81,9 +88,17 @@ function check(elementName) {
             element = element.replaceAll(" ", "");
             break;
         case "DNI":
-            regex = /^([0-9]{8})([A-Z]{1})$/
+            regex = /^([0-9]{8})([A-Z]{1})$/;
             classMsg = ".noValidDNI";
             element = element.replaceAll(" ", "");
+            break;
+        case "IBAN":
+            regex = /^([A-Z]{2})([0-9]{22})$/;
+            classMsg = ".noValidIBAN";
+            break;
+        case "Swift":
+            regex = /^([A-Z]{8})(\d{3})$/;
+            classMsg = ".noValidSwift";
             break;
     }
     if (!element.match(regex)) {
