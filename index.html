@@ -40,9 +40,18 @@
             <label for="IBAN">IBAN: </label>
             <input type="text" name="IBAN" placeholder="Tu IBAN" onfocusout="check(this.name)">
 
-            <label for="Swift">Swift: </label>
-            <input type="text" name="Swift" placeholder="Tu Swift" onfocusout="check(this.name)">
-            
+            <label for="swift">Swift: </label>
+            <input type="text" name="swift" placeholder="Tu Swift" onfocusout="check(this.name)">
+
+            <label for="usuario">Usuario: </label>
+            <input type="text" name="usuario" placeholder="Tu nombre de usuario" onfocusout="submitValidation()">
+
+            <label for="fechaNac">Fecha de nacimiento: </label>
+            <input type="date" name="fechaNac" placeholder="Tu fecha de nacimiento" onfocusout="submitValidation()">
+
+            <label for="foto">Foto de perfil: </label>
+            <input type="file" name="foto">
+
             <button type="submit" onclick="submitValidation()">Enviar</button>
 
         </form>

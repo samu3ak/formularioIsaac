@@ -67,8 +67,11 @@ $(".noValidDNI").style.display = "none";
 insertAfter(noValidText("Formato de IBAN no válido", "noValidIBAN"), $("input[name=IBAN]"));
 $(".noValidIBAN").style.display = "none";
 
-insertAfter(noValidText("Formato de Swift no válido", "noValidSwift"), $("input[name=Swift]"));
-$(".noValidSwift").style.display = "none";
+insertAfter(noValidText("Formato de swift no válido", "noValidswift"), $("input[name=swift]"));
+$(".noValidswift").style.display = "none";
+
+insertAfter(noValidText("Fecha de nacimiento inválida", "noValidFecha"), $("input[name=fechaNac]"));
+$(".noValidFecha").style.display = "none";
 
 // Validates a field with regex
 
@@ -96,9 +99,9 @@ function check(elementName) {
             regex = /^([A-Z]{2})([0-9]{22})$/;
             classMsg = ".noValidIBAN";
             break;
-        case "Swift":
+        case "swift":
             regex = /^([A-Z]{8})(\d{3})$/;
-            classMsg = ".noValidSwift";
+            classMsg = ".noValidswift";
             break;
     }
     if (!element.match(regex)) {
@@ -131,6 +134,7 @@ function oneFieldIsEmpty() {
     for (var i = inputFields.length - 1; i >= 0; i--) {
         isEmpty = inputFields[i].value == "";
     }
+    isEmpty = !$("input[name=fechaNac]").value;
     return isEmpty;
 }
 
