@@ -2,9 +2,9 @@
 Formulario de inscripción para el evento de The Binding Of Isaac
 
 
-=====================
+
 DOCUMENTACIÓN TÉCNICA
-=====================
+
 Formulario HTML+CSS+JS, validado únicamente vía JavaScript
 
 JavaScript Valida:
