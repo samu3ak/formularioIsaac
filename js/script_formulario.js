@@ -118,7 +118,8 @@ function check(elementName) {
 insertAfter(noValidText("Recuerda rellenar todos los campos y con el formato adecuado", "noSubmit"), $("button[type=submit]"));
 $(".noSubmit").style.display = "none";
 function submitValidation() {
-    if (isValidated && !oneFieldIsEmpty()) {
+    let emptyField = oneFieldIsEmpty();
+    if (isValidated && !emptyField) {
         $("button[type=submit]").disabled = false;
         $(".noSubmit").style.display = "none";
     } else {
@@ -131,10 +132,24 @@ function submitValidation() {
 function oneFieldIsEmpty() {
     let isEmpty = false;
     let inputFields = document.querySelectorAll("input");
-    for (var i = inputFields.length - 1; i >= 0; i--) {
+    let i = inputFields.length;
+    while (!isEmpty && i != 0) {
+        i--;
         isEmpty = inputFields[i].value == "";
     }
-    isEmpty = !$("input[name=fechaNac]").value;
     return isEmpty;
+}
+
+// This function alerts the user the form has been successfully submited
+function enviado() {
+    alert("Formulario procesado y enviado satisfactoriamente");
+}
+
+// This function resets every input field
+function reiniciarCampos() {
+    let inputFields = document.querySelectorAll("input");
+    for (let i = inputFields.length - 1; i >= 0; i--) {
+        inputFields[i].value = "";
+    }
 }
 

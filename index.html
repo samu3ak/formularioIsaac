@@ -17,11 +17,13 @@
 
     <div class="formulario">
         <h1>Inscripción para evento de The Binding Of Isaac</h1>
+        <p>*Todos los campos son obligatorios*</p>
+        <button type="button" name="reiniciar" onclick="reiniciarCampos()" onmouseout="submitValidation()">Reiniciar campos</button>
         <div class="modCampos">
             <button type="button" name="email" id="addEmailButton" onmouseout="check(this.name)">+</button>
             <button type="button" name="email" id="removeEmailButton" onmouseout="check(this.name)">-</button>
         </div>
-        <form id=" formulario">
+        <form id=" formulario" onsubmit="enviado()">
 
             <label for="nombre">Nombre: </label>
             <input type="text" name="nombre" placeholder="Tu nombre" onfocusout="submitValidation()">
@@ -51,7 +53,7 @@
             <input type="date" name="fechaNac" placeholder="Tu fecha de nacimiento" onfocusout="submitValidation()">
 
             <label for="foto">Foto de perfil: </label>
-            <input type="file" name="foto">
+            <input type="file" name="foto" accept="image/*" onchange="submitValidation()">
 
             <button type="submit" onclick="submitValidation()">Enviar</button>
 
