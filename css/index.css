@@ -15,7 +15,7 @@ body {
 .formulario {
     display: block;
     margin: 0 auto;
-    height: 1700px;
+    height: 2200px;
     margin-top: 100px;
 }
 
@@ -99,6 +99,7 @@ body {
 
 .formulario input[type=date] {
     width: 150px;
+    font-family: monospace;
 }
 
 .formulario input[type=file] {
@@ -113,11 +114,23 @@ body {
 .formulario button[type=submit] {
     width: 400px;
     height: 60px;
+    font-family: monospace;
 }
 
-.formulario button[name=reiniciar]{
+.formulario button[name=reiniciar] {
     margin: auto;
     display: block;
     width: 200px;
     margin-bottom: 20px;
+}
+
+footer {
+    margin-top: 300px;
+    display: block;
+    text-align: center;
+}
+
+footer p {
+    font-family: monospace;
+    color: white;
 }
