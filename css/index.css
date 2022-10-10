@@ -1,20 +1,33 @@
+
 header {
-    background-color: rgb(255, 97, 97);
     height: 200px;
 }
 
+header img{
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
+body{
+    background-image: url("../images/background2.jpg");
+}
+
 .formulario {
+    display: block;
     margin: 0 auto;
-    background-color: rgb(97, 97, 255);
     height: 1700px;
 }
 
 .formulario h1 {
     text-align: center;
+    font-size:48px;
     padding-top: 40px;
+    color: aliceblue;
 }
 
 .formulario form {
+    display: block;
     margin: auto;
     text-align: center;
     height: 1600px;
@@ -25,6 +38,7 @@ header {
 }
 
 .formulario form input {
+    display: block;
     margin-top: 10px;
     margin-bottom: 30px;
     padding: 10px;
