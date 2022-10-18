@@ -153,20 +153,16 @@ function reiniciarCampos() {
     }
 }
 
+// This function checks the IBAN and automatically writes the appropiate SWIFT/BIC
 function checkSwift() {
     let iban = $("input[name=IBAN]").value;
     if (iban.match(/^([A-Z]{2})([0-9]{22})$/)) {
         let codigoBanco = iban.substring(4, 8);
-        let i = 0;
-        while (i < listaCodigoBanco.length && codigoBanco != listaCodigoBanco[i]) {
-            i++;
-        }
-        if (codigoBanco === listaCodigoBanco[i]) {
-            $("input[name=swift").value = listaBicSwift[i];
-        } else {
-            $("input[name=swift").value = "";
-        }
-        check("swift");
+        listaCodigoBanco.map((codigo, i) => {
+            if (codigo === codigoBanco) {
+                $("input[name=swift]").value = listaBicSwift[i];
+            }
+        });
     }
 }
 
