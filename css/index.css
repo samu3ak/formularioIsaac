@@ -134,3 +134,8 @@ footer p {
     font-family: monospace;
     color: white;
 }
+
+/* Dinamic boxes CSS */
+form p {
+    color: red;
+}
